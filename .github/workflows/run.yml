@@ -18,6 +18,5 @@ jobs:
           python3 -mpip install polars numpy
           time python3 generate.py
           time python3 convert.py
-        with:
-          env:
-            POLARS_MAX_THREADS: ${{ matrix.polars-max-threads }}
+        env:
+          POLARS_MAX_THREADS: ${{ matrix.polars-max-threads }}
