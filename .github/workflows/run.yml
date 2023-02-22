@@ -16,7 +16,12 @@ jobs:
         run: |
           python3 -mpip install -U pip
           python3 -mpip install polars numpy
+          echo "Run generate.py"
           time python3 generate.py
+          echo "Run convert.py"
+          top -d60 -b -n30 &
+          TOP_PID=$!
           time python3 convert.py
+          kill $TOP_PID
         env:
           POLARS_MAX_THREADS: ${{ matrix.polars-max-threads }}
