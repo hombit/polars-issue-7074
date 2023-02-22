@@ -3,12 +3,12 @@ name: run
 on: [push, pull_request]
 
 jobs:
-  strategy:
-    fail-fast: false
-    matrix:
-      polars-max-threads: [1, 2]
-
   run:
+    strategy:
+      fail-fast: false
+      matrix:
+        polars-max-threads: [1, 2]
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
