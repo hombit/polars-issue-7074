@@ -1,0 +1,15 @@
+name: run
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run
+        run: |
+          python3 -mpip install -U pip
+          python3 -mpip install polars numpy
+          time python3 generate.py
+          time python3 convert.py
